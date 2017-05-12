@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  privoxy:
+    build: ./privoxy
+    links:
+      - tor
+
+  tor:
+    build:
+      context: ./tor
+      args:
+        password: "foo"
+
+  # redis:
+  #   build: ./redis
+  #   volumes:
+  #     - redis-data:/data
+
+  scraper:
+    build: ./scraper
+    environment:
+      - http_proxy=http://privoxy:8118
+      - PYTHONUNBUFFERED=0
+    links:
+      - tor
+      - privoxy
+    # restart: on-failure
+      # - redis
+    # environment:
+    #   - PYTHONUNBUFFERED=0
+
+# volumes:
+#   redis-data:
+#     driver: local

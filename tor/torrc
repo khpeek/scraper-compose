@@ -1,0 +1,3 @@
+SocksListenAddress 0.0.0.0
+ControlPort 9051
+ControlListenAddress 0.0.0.0
