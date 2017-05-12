@@ -10,6 +10,8 @@ class QuotesSpider(scrapy.Spider):
                        'TOR_ITEMS_TO_SCRAPE_PER_IDENTITY': 5
                        }
 
+    download_delay = 2    # Wait 2 seconds (actually a random time between 1 and 3 seconds) between downloading pages
+
 
     def parse(self, response):
         for quote in response.css('div.quote'):
