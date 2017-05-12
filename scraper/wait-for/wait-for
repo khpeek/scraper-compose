@@ -20,7 +20,7 @@ USAGE
 }
 
 check_tor() {
-  curl --silent --proxy privoxy:8118 https://check.torproject.org | grep -q "Congratulations. This browser is configured to use Tor."
+  curl --silent --no-buffer --proxy privoxy:8118 https://check.torproject.org | grep -q "Congratulations. This browser is configured to use Tor."
 }
 
 wait_for() {
